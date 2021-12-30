@@ -15,15 +15,14 @@ export default function TaskList() {
     const [tasks, setTasks] = useState([])
 
     const handleDelete = async (id) => {
-        const res = await fetch(`http://localhost:4000/tasks/${id}`, {
+        await fetch(`http://localhost:4000/tasks/${id}`, {
             method: 'DELETE'
         });
-        console.log(res)
         loadTasks();
     }
 
     const handleUpdate = async (id) => {
-        navigate(`/task/${id}`);
+        navigate(`/task/${id}/edit`);
         
         loadTasks();
     }
@@ -37,7 +36,7 @@ export default function TaskList() {
             <h1>Task List</h1>
             {
                 tasks.map((task) => (
-                    <Card style={{ marginBottom: '.7rem', backgroundColor: '#1e272e'}}>
+                    <Card style={{ marginBottom: '.7rem', backgroundColor: '#1e272e'}} key={task.id}>
                         <CardContent style={{display: 'flex', justifyContent: 'space-between'}}>
                             <div style={{color: 'white'}}>
                                 <Typography>{task.title}</Typography>
