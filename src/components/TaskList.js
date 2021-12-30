@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {Card, CardContent, Typography} from '@mui/material';
 
 export default function TaskList() {
 
@@ -17,6 +18,16 @@ export default function TaskList() {
     return (
         <>
             <h1>Task List</h1>
+            {
+                tasks.map(task => (
+                    <Card style={{ marginBottom: '.7rem' }}>
+                        <CardContent>
+                            <Typography>{task.title}</Typography>
+                            <Typography>{task.description}</Typography>
+                        </CardContent>
+                    </Card>
+                ))
+            }
         </>
     )
 }
