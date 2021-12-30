@@ -21,24 +21,29 @@ export default function TaskList() {
             {
                 tasks.map((task) => (
                     <Card style={{ marginBottom: '.7rem', backgroundColor: '#1e272e'}}>
-                        <CardContent>
-                            <Typography>{task.title}</Typography>
-                            <Typography>{task.description}</Typography>
+                        <CardContent style={{display: 'flex', justifyContent: 'space-between'}}>
+                            <div style={{color: 'white'}}>
+                                <Typography>{task.title}</Typography>
+                                <Typography>{task.description}</Typography>
+                            </div>
 
-                            <Button 
-                                variant='contained' 
-                                color='inherit' 
-                                onClick={() => console.log('editing')}
-                            >
-                                Edit
-                            </Button>
-                            <Button
-                                variant='contained'
-                                color='warning'
-                                onClick={() => console.log('deleting')}
-                            >
-                                Delete
-                            </Button>
+                            <div>
+                                <Button 
+                                    variant='contained' 
+                                    color='inherit' 
+                                    onClick={() => console.log('editing')}
+                                >
+                                    Edit
+                                </Button>
+                                <Button
+                                    variant='contained'
+                                    color='warning'
+                                    style={{marginLeft: '.5rem'}}
+                                    onClick={() => console.log('deleting')}
+                                >
+                                    Delete
+                                </Button>
+                            </div>
                         </CardContent>
                     </Card>
                 ))
