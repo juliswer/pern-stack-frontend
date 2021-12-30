@@ -9,10 +9,19 @@ export default function TaskForm() {
         description: ''
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
-        console.log(task);
+        const res = await fetch("http://localhost:4000/tasks", {
+            method: "POST",
+            body: JSON.stringify(task),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        const data = await res.json();
+        console.log(data);
     }
 
     const handleChange = (e) => {
