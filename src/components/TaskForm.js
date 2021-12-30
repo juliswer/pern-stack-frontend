@@ -69,10 +69,10 @@ export default function TaskForm() {
                                 onChange={handleChange}
                             />
 
-                            <Button variant='contained' color='primary' type='submit'>
+                            <Button variant='contained' color='primary' type='submit' disabled={!task.title || !task.description}>
                                 {loading ? <CircularProgress 
-                                    color="inherit"
-                                    size={24}
+                                                color="inherit"
+                                                size={24}
                                 /> : 'Create'}
                             </Button>
                         </form>
