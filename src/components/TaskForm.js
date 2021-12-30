@@ -1,8 +1,11 @@
 import {Button, Card, CardContent, Grid, TextField, Typography} from '@mui/material';
 
 import {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 export default function TaskForm() {
+
+    const navigate = useNavigate();
 
     const [task, setTask] = useState({
         title: '',
@@ -18,10 +21,9 @@ export default function TaskForm() {
             headers: {
                 "Content-Type": "application/json"
             }
-        })
-
-        const data = await res.json();
-        console.log(data);
+        });
+        
+        navigate('/');
     }
 
     const handleChange = (e) => {
