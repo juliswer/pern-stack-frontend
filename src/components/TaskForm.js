@@ -17,6 +17,8 @@ export default function TaskForm() {
                                 variant='filled' 
                                 label='Write your title'
                                 sx={{display: 'block', margin: '.5rem 0'}}
+                                inputProps={{style: {color: 'white'}}}
+                                InputLabelProps={{style: {color: 'white'}}}
                             />
 
                             <TextField 
@@ -25,6 +27,8 @@ export default function TaskForm() {
                                 multiline
                                 rows={4}
                                 sx={{display: 'block', margin: '.5rem 0'}}
+                                inputProps={{style: {color: 'white'}}}
+                                InputLabelProps={{style: {color: 'white'}}}
                             />
 
                             <Button variant='contained' color='primary' type='submit'>
