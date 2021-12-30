@@ -11,12 +11,12 @@ export default function TaskForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submitted')
+        
+        console.log(task);
     }
 
     const handleChange = (e) => {
         setTask({...task, [e.target.name]: e.target.value})
-        console.log(task)
     }
 
     return (
