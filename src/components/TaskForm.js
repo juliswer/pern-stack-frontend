@@ -1,9 +1,11 @@
 import {Button, Card, CardContent, CircularProgress, Grid, TextField, Typography} from '@mui/material';
 
 import {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
-export default function TaskForm() {
+export default function TaskForm(props) {
+
+    const {id} = useParams();
 
     const navigate = useNavigate();
 
@@ -11,6 +13,10 @@ export default function TaskForm() {
         title: '',
         description: ''
     });
+
+    useEffect(() => {
+        console.log(id);
+    }, [])
 
     const [loading, setLoading] = useState(false);
 
