@@ -14,10 +14,6 @@ export default function TaskForm(props) {
         description: ''
     });
 
-    useEffect(() => {
-        console.log(id);
-    }, [])
-
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -49,13 +45,13 @@ export default function TaskForm(props) {
                     style={{backgroundColor: '#1e272e', padding: '1rem'}}
                 >
                     <Typography variant='5' textAlign="center" color='white'>
-                        Create Task
+                        {id ? 'Edit Task' : 'New Task'}
                     </Typography>
                     <CardContent>
                         <form onSubmit={handleSubmit}>
                             <TextField 
                                 variant='filled' 
-                                label='Write your title'
+                                label={id ? 'Update your title' : 'Write your title'}
                                 sx={{display: 'block', margin: '.5rem 0'}}
                                 inputProps={{style: {color: 'white'}}}
                                 name="title"
@@ -65,7 +61,7 @@ export default function TaskForm(props) {
 
                             <TextField 
                                 variant='filled' 
-                                label='Write your description'
+                                label={id ? 'Update your description' : 'Write your description'}
                                 multiline
                                 name="description"
                                 rows={4}
@@ -79,7 +75,10 @@ export default function TaskForm(props) {
                                 {loading ? <CircularProgress 
                                                 color="inherit"
                                                 size={24}
-                                /> : 'Create'}
+                                            /> 
+                                        : void(0)
+                                }
+                                {id ? 'Update' : 'Create'}
                             </Button>
                         </form>
                     </CardContent>
