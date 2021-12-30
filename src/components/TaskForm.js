@@ -1,6 +1,24 @@
 import {Button, Card, CardContent, Grid, TextField, Typography} from '@mui/material';
 
+import {useState, useEffect} from 'react';
+
 export default function TaskForm() {
+
+    const [task, setTask] = useState({
+        title: '',
+        description: ''
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('submitted')
+    }
+
+    const handleChange = (e) => {
+        setTask({...task, [e.target.name]: e.target.value})
+        console.log(task)
+    }
+
     return (
         <Grid container direction="column" alignItems="center" justifyContent="center">
             <Grid item xs={3}>
@@ -12,23 +30,27 @@ export default function TaskForm() {
                         Create Task
                     </Typography>
                     <CardContent>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <TextField 
                                 variant='filled' 
                                 label='Write your title'
                                 sx={{display: 'block', margin: '.5rem 0'}}
                                 inputProps={{style: {color: 'white'}}}
+                                name="title"
                                 InputLabelProps={{style: {color: 'white'}}}
+                                onChange={handleChange}
                             />
 
                             <TextField 
                                 variant='filled' 
                                 label='Write your description'
                                 multiline
+                                name="description"
                                 rows={4}
                                 sx={{display: 'block', margin: '.5rem 0'}}
                                 inputProps={{style: {color: 'white'}}}
                                 InputLabelProps={{style: {color: 'white'}}}
+                                onChange={handleChange}
                             />
 
                             <Button variant='contained' color='primary' type='submit'>
