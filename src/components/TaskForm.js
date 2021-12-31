@@ -8,15 +8,18 @@ export default function TaskForm(props) {
     const {id} = useParams();
 
     
-    const loadTask = async () => {
+    const loadTask = async (id) => {
         const res = await fetch('http://localhost:4000/tasks/' + id);
         const data = await res.json();
         setTask({ title: data.title, description: data.description })
+        setEditing(true)
     }
     
     useEffect(() => {
-        loadTask();
-    }, [])
+        if (id) {
+          loadTask(id);
+        }
+      }, [id]);
 
     const navigate = useNavigate();
 
@@ -30,8 +33,8 @@ export default function TaskForm(props) {
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
-        if (id) { setEditing(true)}
         e.preventDefault();
+        setLoading(true);
         
         try {
             if (editing) {
