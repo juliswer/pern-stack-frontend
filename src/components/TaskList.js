@@ -33,7 +33,7 @@ export default function TaskList() {
 
     return (
         <>
-            <h1>Task List</h1>
+            <h1>{tasks.length === 0 ? 'There are not tasks yet' : `Task List (${tasks.length})`}</h1>
             {
                 tasks.map((task) => (
                     <Card style={{ marginBottom: '.7rem', backgroundColor: '#1e272e'}} key={task.id}>
