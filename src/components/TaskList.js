@@ -1,6 +1,10 @@
 import {useEffect, useState} from 'react';
 import {Button, Card, CardContent, Typography} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import AutoFixOffIcon from '@mui/icons-material/AutoFixOff';
 
 export default function TaskList() {
 
@@ -33,10 +37,29 @@ export default function TaskList() {
 
     return (
         <>
-            <h1>{tasks.length === 0 ? 'There are not tasks yet' : `Task List (${tasks.length})`}</h1>
+            { /*{ tasks.length === 0 ? (
+                <Typography>
+                    <AssignmentIcon />
+                    {` ${tasks.length} Tasks`}
+                </Typography>
+            ) : (
+                <Typography>
+                    <AutoFixOffIcon />
+                    {` ${tasks.length} Tasks`}
+                </Typography>
+            )} */}
+            <div style={{display: 'flex'}}>
+                {tasks.length === 0 ? (
+                    <h2 style={{marginRight: '.3rem'}}><AssignmentIcon /></h2>
+                ) : (
+                    <h2 style={{marginRight: '.3rem'}}><AutoFixOffIcon /></h2>
+                )}<h2>{tasks.length === 0 ? (
+                    'There are not tasks yet'
+                ) : `Task List (${tasks.length})`}</h2>
+            </div>
             {
                 tasks.map((task) => (
-                    <Card style={{ marginBottom: '.7rem', backgroundColor: '#1e272e'}} key={task.id}>
+                    <Card style={{ marginBottom: '.7rem', backgroundColor: '#22066eef'}} key={task.id}>
                         <CardContent style={{display: 'flex', justifyContent: 'space-between'}}>
                             <div style={{color: 'white'}}>
                                 <Typography>{task.title}</Typography>
@@ -45,18 +68,20 @@ export default function TaskList() {
 
                             <div>
                                 <Button 
-                                    variant='contained' 
-                                    color='inherit' 
+                                    variant='outlined' 
+                                    color='success' 
                                     onClick={() => handleUpdate(task.id)}
                                 >
+                                    <EditIcon sx={{marginRight: '.3rem'}} />
                                     Edit
                                 </Button>
                                 <Button
-                                    variant='contained'
-                                    color='warning'
+                                    variant='outlined'
+                                    color='error'
                                     style={{marginLeft: '.5rem'}}
                                     onClick={() => handleDelete(task.id)}
                                 >
+                                    <DeleteIcon sx={{marginRight: '.3rem'}} />
                                     Delete
                                 </Button>
                             </div>

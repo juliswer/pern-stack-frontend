@@ -69,7 +69,7 @@ export default function TaskForm(props) {
 
     return (
         <Grid container direction="column" alignItems="center" justifyContent="center">
-            <Grid item xs={3}>
+            <Grid item xs={3} >
                 <Card
                     sx={{mt: 5}}
                     style={{backgroundColor: '#1e272e', padding: '1rem'}}

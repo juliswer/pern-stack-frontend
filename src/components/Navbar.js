@@ -1,5 +1,6 @@
 import {AppBar, Box, Button, Container, Toolbar, Typography} from '@mui/material';
 import {Link, useNavigate} from 'react-router-dom';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 export default function Navbar() {
 
@@ -14,7 +15,8 @@ export default function Navbar() {
                             <Link to='/' style={{textDecoration: 'none', color: '#eee'}}>PERN Stack</Link>
                         </Typography>
 
-                        <Button variant='contained' color='primary' onClick={() => navigate('/task/new')}>
+                        <Button variant='outlined' color='error' onClick={() => navigate('/task/new')}>
+                            <RocketLaunchIcon sx={{marginRight: '.3rem'}} />
                             New Task
                         </Button>
                     </Toolbar>
