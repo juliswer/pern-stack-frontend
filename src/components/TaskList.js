@@ -24,7 +24,7 @@ export default function TaskList() {
         await fetch(`http://localhost:4000/tasks/${id}`, {
             method: 'DELETE'
         });
-        toast.error('The task was deleted succesfully')
+        toast.success('The task was deleted succesfully')
         loadTasks();
     }
 
