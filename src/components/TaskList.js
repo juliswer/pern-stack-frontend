@@ -24,7 +24,7 @@ export default function TaskList() {
         await fetch(`http://localhost:4000/tasks/${id}`, {
             method: 'DELETE'
         });
-        toast.success('The task was deleted succesfully')
+        toast.error('The task was deleted succesfully')
         loadTasks();
     }
 
@@ -51,7 +51,7 @@ export default function TaskList() {
                     {` ${tasks.length} Tasks`}
                 </Typography>
             )} */}
-            <ToastContainer position="top-center" hideProgressBar autoClose={2000}/>
+            <ToastContainer position="top-center" hideProgressBar autoClose={2000} theme={'colored'}/>
             <div style={{display: 'flex'}}>
                 {tasks.length === 0 ? (
                     <h2 style={{marginRight: '.3rem'}}><AssignmentIcon /></h2>
