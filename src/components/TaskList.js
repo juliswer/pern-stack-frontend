@@ -59,7 +59,7 @@ export default function TaskList() {
             </div>
             {
                 tasks.map((task) => (
-                    <Card style={{ marginBottom: '.7rem', backgroundColor: '#22066eef'}} key={task.id}>
+                    <Card style={{ marginBottom: '.7rem', backgroundColor: '#000d7cef'}} key={task.id}>
                         <CardContent style={{display: 'flex', justifyContent: 'space-between'}}>
                             <div style={{color: 'white'}}>
                                 <Typography>{task.title}</Typography>

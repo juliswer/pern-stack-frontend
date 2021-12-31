@@ -15,7 +15,7 @@ export default function Navbar() {
                             <Link to='/' style={{textDecoration: 'none', color: '#eee'}}>PERN Stack</Link>
                         </Typography>
 
-                        <Button variant='outlined' color='error' onClick={() => navigate('/task/new')}>
+                        <Button variant='outlined' onClick={() => navigate('/task/new')}>
                             <RocketLaunchIcon sx={{marginRight: '.3rem'}} />
                             New Task
                         </Button>
