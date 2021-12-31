@@ -7,6 +7,17 @@ export default function TaskForm(props) {
 
     const {id} = useParams();
 
+    
+    const loadTask = async () => {
+        const res = await fetch('http://localhost:4000/tasks/' + id);
+        const data = await res.json();
+        setTask({ title: data.title, description: data.description })
+    }
+    
+    useEffect(() => {
+        loadTask();
+    }, [])
+
     const navigate = useNavigate();
 
     const [task, setTask] = useState({
@@ -55,6 +66,7 @@ export default function TaskForm(props) {
                                 sx={{display: 'block', margin: '.5rem 0'}}
                                 inputProps={{style: {color: 'white'}}}
                                 name="title"
+                                value={task.title}
                                 InputLabelProps={{style: {color: 'white'}}}
                                 onChange={handleChange}
                             />
@@ -65,6 +77,7 @@ export default function TaskForm(props) {
                                 multiline
                                 name="description"
                                 rows={4}
+                                value={task.description}
                                 sx={{display: 'block', margin: '.5rem 0'}}
                                 inputProps={{style: {color: 'white'}}}
                                 InputLabelProps={{style: {color: 'white'}}}
