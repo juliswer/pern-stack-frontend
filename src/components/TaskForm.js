@@ -72,7 +72,7 @@ export default function TaskForm(props) {
             <Grid item xs={3} >
                 <Card
                     sx={{mt: 5}}
-                    style={{backgroundColor: '#1e272e', padding: '1rem'}}
+                    style={{backgroundColor: '#000d7cef', padding: '1rem'}}
                 >
                     <Typography variant='5' textAlign="center" color='white'>
                         {id ? 'Edit Task' : 'New Task'}
