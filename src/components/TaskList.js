@@ -5,6 +5,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AutoFixOffIcon from '@mui/icons-material/AutoFixOff';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function TaskList() {
 
@@ -22,6 +24,7 @@ export default function TaskList() {
         await fetch(`http://localhost:4000/tasks/${id}`, {
             method: 'DELETE'
         });
+        toast.success('The task was deleted succesfully')
         loadTasks();
     }
 
@@ -48,6 +51,7 @@ export default function TaskList() {
                     {` ${tasks.length} Tasks`}
                 </Typography>
             )} */}
+            <ToastContainer position="top-center" hideProgressBar autoClose={2000}/>
             <div style={{display: 'flex'}}>
                 {tasks.length === 0 ? (
                     <h2 style={{marginRight: '.3rem'}}><AssignmentIcon /></h2>
@@ -83,6 +87,7 @@ export default function TaskList() {
                                 >
                                     <DeleteIcon sx={{marginRight: '.3rem'}} />
                                     Delete
+                                    
                                 </Button>
                             </div>
                         </CardContent>

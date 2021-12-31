@@ -88,6 +88,7 @@ export default function TaskForm(props) {
                                 value={task.title}
                                 InputLabelProps={{style: {color: 'white'}}}
                                 onChange={handleChange}
+                                autoFocus
                             />
 
                             <TextField 
