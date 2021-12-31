@@ -25,23 +25,39 @@ export default function TaskForm(props) {
         description: ''
     });
 
+    const [editing, setEditing] = useState(false)
+
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
+        if (id) { setEditing(true)}
         e.preventDefault();
-
-        setLoading(true)
         
-        const res = await fetch("http://localhost:4000/tasks", {
-            method: "POST",
-            body: JSON.stringify(task),
-            headers: {
-                "Content-Type": "application/json"
+        try {
+            if (editing) {
+              const response = await fetch(
+                "http://localhost:4000/tasks/" + id,
+                {
+                  method: "PUT",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(task),
+                }
+              );
+              await response.json();
+            } else {
+              const response = await fetch("http://localhost:4000/tasks", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(task),
+              });
+              await response.json();
             }
-        });
-        
-        setLoading(false)
-        navigate('/');
+      
+            setLoading(false);
+            navigate("/");
+          } catch (error) {
+            console.error(error);
+          }
     }
 
     const handleChange = (e) => {
